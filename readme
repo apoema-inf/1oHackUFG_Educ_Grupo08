@@ -1,1 +1,5 @@
 Disponibilização de conteudo de acordo com perfil de aprendizado
+
+- há um banco de dados feito no Neo4j, versão 3.4.6, e possui um arquivo em python, que quando devidamente inserida os campos de autentificação e executado gera toda a estrutura usada para testes e desenvolvimento do Programa.
+
+O QUE FOI DESENVOLVIDO É APENAS UM PROTÓTIPO.
