@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>A Definir</title>
+
+  <!-- fonts -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body id="page-top">
+
+
+  <!-- Masthead -->
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <div class="container-fluid">
+            <img class="img-fluid" src="img/tlogo.svg" alt="Logo">
+          </div>  
+        <!------ Include the above in your HEAD tag ---------->
+        
+        <div class="wrapper BounceIn">
+          <div id="formContent">
+            <!-- Tabs Titles -->
+        
+            <!-- Icon -->
+            <div class="fadeIn first">
+             
+            </div>
+        
+            <!-- Login Form -->
+            
+              <input type="text" id="login" class="fadeIn second" name="login" placeholder="usuario">
+              <input type="password" id="password" class="fadeIn third" name="password" placeholder="senha">
+              <!--<input id= "button" type="submit" class="fadeIn btn-success" value="Acessar">-->
+              <a href="reg-form.html" id="button" type="submit" class="fadeIn btn-success" value="Acessar">Acessar</a>
+                    
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+			  <a class="underlineHover" href="registro.html">Cadastrar</a>
+			</div>
+          </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.js"></script>
+  <script type="text/javascript">
+
+   
+    var usuario  = document.getElementById("login");
+    var senha   = document.getElementById("password");
+    var f = document.getElementById("button");
+    //console.log(f);
+
+    function sendRequest() {
+      //f.preventDefault();
+      var parameters = {
+        "function": "login",
+        "usuario": usuario.value, 
+        "senha": senha.value
+      };
+      alert(parameters)
+      parameters = JSON.stringify(parameters);
+      var retorno;
+
+      const Http = new XMLHttpRequest();
+      const url='http://localhost:8080';
+
+      Http.open("POST", url, true);
+      Http.withCredentials =true;
+      
+      Http.setRequestHeader("Content-Type", "application/json");
+      Http.send(parameters);
+
+      Http.onreadystatechange = (e) => {
+        
+        if(Http.readyState === XMLHttpRequest.DONE && Http.status === 200){
+        
+          var resposta = JSON.parse(Http.responseText);
+          alert('foi')
+          // Coloca o valor retorna no input do frete
+          retorno = resposta;
+        }
+
+      }
+    }
+    f.addEventListener("click", sendRequest, true);
+    
+    
+  </script>
+</body>
+
+</html>
